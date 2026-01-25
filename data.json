@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "PSB",
+    "sub": "PENERIMAAN SANTRI BARU",
+    "year": "2026 - 2027",
+    "desc": "Gelombang 1 : 1 September - 22 Nopember 2025",
+    "image": "https://baiturrahman.com/wp-content/uploads/2023/12/Header-Santri.png"
+  },
+  "contact": {
+    "whatsapp": "+6285810652185"
+  },
+  "programs": [
+    { "icon": "👥", "title": "Memiliki Potensi Diri (Kepemimpinan)" },
+    { "icon": "🏆", "title": "Pencapaian Prestasi Akademik" },
+    { "icon": "📖", "title": "Penguasaan Tahfidz Minimal 4 Juz" },
+    { "icon": "💳", "title": "Mampu Berbahasa Arab dan Inggris" },
+    { "icon": "🛡️", "title": "Pembelajaran Life Skill" },
+    { "icon": "📰", "title": "Penguasaan Hadits Arbain" },
+    { "icon": "🚀", "title": "Memperdalam Kitab Pilihan" }
+  ]
+}
