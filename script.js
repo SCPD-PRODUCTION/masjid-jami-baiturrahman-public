@@ -1,52 +1,55 @@
-const BASE_URL = "http://localhost:2011";
+const API_BASE = "http://localhost:2011";
 
-async function fetchContent() {
+async function init() {
     try {
-        // Mengambil data dari endpoint server (kamu perlu menambahkan app.get('/api/data') di server.js)
-        const response = await fetch(`${BASE_URL}/api/get-data`); 
-        const data = await response.json();
+        const res = await fetch(`${API_BASE}/api/get-data`);
+        const data = await res.json();
 
-        // 1. Update Running Text (Ulang 5 kali)
-        const marquee = document.getElementById('marquee-container');
-        marquee.innerHTML = (data.runningText + " &nbsp;&nbsp;&bull;&nbsp;&nbsp; ").repeat(5);
+        // 1. Fix Running Text (Ulang 5x)
+        const marquee = document.getElementById('marquee-content');
+        const text = `SELAMAT DATANG DI MASJID JAMI BAITURRAHMAN &nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp; `;
+        marquee.innerHTML = text.repeat(5);
 
-        // 2. Update Hero Banner
+        // 2. Hero Update
         document.getElementById('hero-title').innerText = data.hero.title;
         document.getElementById('hero-desc').innerText = data.hero.description;
-        document.getElementById('hero-section').style.backgroundImage = `url('${data.hero.imageUrl}')`;
+        document.getElementById('hero-bg').style.backgroundImage = `url('${data.hero.imageUrl}')`;
 
-        // 3. Update Pengurus
-        const container = document.getElementById('pengurus-container');
-        container.innerHTML = data.pengurus.map(p => `
-            <div class="card-pengurus">
-                <img src="${p.foto}" alt="${p.nama}">
+        // 3. Pengurus Update
+        const list = document.getElementById('pengurus-list');
+        list.innerHTML = data.pengurus.map(p => `
+            <div class="card-user">
+                <img src="${p.foto}" alt="foto">
                 <h3>${p.nama}</h3>
-                <p style="color:green; font-weight:bold">${p.jabatan}</p>
-                <p style="font-style:italic; font-size:0.9rem">"${p.bio}"</p>
+                <p style="color: #228b22; font-weight: bold; margin: 5px 0;">${p.jabatan}</p>
+                <div style="color: #ffd700; margin-bottom: 15px;">★★★★★</div>
+                <p style="font-size: 0.9rem; color: #666; font-style: italic;">"${p.bio}"</p>
             </div>
         `).join('');
 
-        // 4. Jalankan Rotasi Jadwal Sholat
-        startPrayerRotation(data.jadwalSholat);
+        // 4. Prayer Rotation
+        startRotation(data.jadwalSholat);
 
-    } catch (err) {
-        console.error("Gagal koneksi ke server:", err);
+    } catch (e) {
+        console.error("Gagal ambil data server:", e);
     }
 }
 
-function startPrayerRotation(jadwal) {
-    let i = 0;
+function startRotation(jadwal) {
+    let idx = 0;
     const el = document.getElementById('prayer-display');
     
-    setInterval(() => {
-        el.classList.add('fade-out'); // Efek pudar keluar
-        
+    function change() {
+        el.classList.add('fade-out');
         setTimeout(() => {
-            el.innerText = `${jadwal[i].nama} : ${jadwal[i].jam}`;
-            el.classList.remove('fade-out'); // Munculkan kembali
-            i = (i + 1) % jadwal.length;
-        }, 500);
-    }, 4000);
+            el.innerText = `${jadwal[idx].nama} : ${jadwal[idx].jam}`;
+            el.classList.remove('fade-out');
+            idx = (idx + 1) % jadwal.length;
+        }, 600);
+    }
+    
+    setInterval(change, 4000);
+    change();
 }
 
-window.onload = fetchContent;
+init();
