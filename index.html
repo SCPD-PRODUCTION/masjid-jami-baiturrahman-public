@@ -10,50 +10,60 @@
 <body>
 
     <header>
-        <div class="logo-area">
-            <div class="logo-circle">B</div>
+        <div class="header-content">
+            <div class="logo-box">B</div>
             <h1>MASJID JAMI BAITURRAHMAN</h1>
+            <p>Pusat Ibadah, Dakwah, dan Sosial Kemasyarakatan</p>
         </div>
     </header>
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Profil</a>
-        <a href="#">Program</a>
-        <a href="#">Layanan ZIS</a>
-        <a href="#">Kontak</a>
+        <div class="nav-container">
+            <a href="#">Home</a>
+            <a href="#">Profil</a>
+            <a href="#">Program</a>
+            <a href="#">Layanan ZIS</a>
+            <a href="#">Kontak</a>
+        </div>
     </nav>
 
-    <div class="announcement-bar">
-        <div id="marquee-container" class="marquee-text">
-            Memuat pengumuman...
-        </div>
+    <div class="marquee-wrapper">
+        <div id="marquee-content" class="marquee-text"></div>
     </div>
 
-    <div class="prayer-section">
-        <div class="prayer-label">JADWAL SHOLAT HARI INI:</div>
-        <div class="prayer-display" id="prayer-display">Memuat jadwal...</div>
+    <div class="prayer-bar">
+        <span class="prayer-label">JADWAL SHOLAT:</span>
+        <div id="prayer-display" class="prayer-time">Memuat...</div>
     </div>
 
-    <section class="hero" id="hero-section">
+    <section class="hero-section" id="hero-bg">
         <div class="hero-overlay">
-            <div class="hero-content">
+            <div class="hero-inner">
+                <span class="status-tag">INFO TERBARU</span>
                 <h2 id="hero-title">...</h2>
                 <p id="hero-desc">...</p>
-                <a href="#" class="btn-action">INFAQ & SHODAQOH</a>
+                <a href="#" class="btn-cta">DONASI SEKARANG</a>
             </div>
         </div>
     </section>
 
-    <main class="container">
-        <h2 class="section-title">PENGURUS DKM</h2>
-        <div class="grid-layout" id="pengurus-container">
+    <main class="main-content">
+        <h2 class="title-border">PENGURUS DKM</h2>
+        <div class="pengurus-grid" id="pengurus-list">
             </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Masjid Jami Baiturrahman. All Rights Reserved.</p>
+        <div class="footer-top">
+            <p><strong>Masjid Jami Baiturrahman</strong></p>
+            <p>Jl. Rancakole Kp. Bojong, Ciparay, Kab. Bandung</p>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Masjid Jami Baiturrahman. All Rights Reserved.
+        </div>
     </footer>
+
+    <a href="#" class="wa-sticky"><i class="fab fa-whatsapp"></i></a>
 
     <script src="script.js"></script>
 </body>
